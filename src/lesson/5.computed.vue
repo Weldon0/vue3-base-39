@@ -26,7 +26,7 @@ const betterScoreList = computed({
 });
 
 const pushScore = () => {
-  scoreList.value.push(200);
+  betterScoreList.value.push(200);
 };
 </script>
 
