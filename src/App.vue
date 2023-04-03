@@ -1,64 +1,34 @@
-<template>
-  <div>
-      <img v-if="flag" src="./assets/vue.svg" alt="">
-      <button @click="toggleFlag">显示或者隐藏</button>
+<script setup>
+import { ref } from "vue";
+import TodoHeader from "./components/TodoHeader.vue";
+import TodoMain from "./components/TodoMain.vue";
+import TodoFooter from "./components/TodoFooter.vue";
+// 提供数据
+const list = ref([
+  {
+    id: 1,
+    name: "吃饭",
+    done: true,
+  },
+  {
+    id: 2,
+    name: "睡觉",
+    done: false,
+  },
+  {
+    id: 3,
+    name: "打豆豆",
+    done: false,
+  },
+]);
+</script>
 
-      <h1>{{count}}</h1>
-      <button @click="addCount">点击自增</button>
-  </div>
+<template>
+  <section class="todoapp">
+    <TodoHeader></TodoHeader>
+    <TodoMain :list="list"></TodoMain>
+    <TodoFooter></TodoFooter>
+  </section>
 </template>
 
-<script>
-
-import {ref} from "vue";
-
-export default {
-  setup() {
-
-    // 切换图片显示或者隐藏
-    const flag = ref(true) // 切换的标识
-    const toogleFlag = () => {
-      flag.value = !flag.value
-    }
-
-
-    const count = ref(0)
-    // 数字自增的逻辑
-    const addCount = () => {
-      count.value ++
-    }
-
-    return {
-      flag,
-      toogleFlag,
-      count,
-      addCount
-    }
-  }
-}
-
-// vue3里面可以完全写vue2
-// options API
-// export default {
-//   data() {
-//     return {
-//       flag: true,
-//       count: 0
-//     }
-//   },
-//   computed: {},
-//   watch: {},
-//   filters: {},
-//   directives: {},
-//   mixins: [],
-//   props: [],
-//   methods: {
-//     toggleFlag() {
-//       this.flag = !this.flag
-//     },
-//     addCount() {
-//       this.count ++
-//     }
-//   },
-// }
-</script>
+<style></style>

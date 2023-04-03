@@ -5,6 +5,7 @@
 
 <script setup>
 // setup语法糖，script标签上设置setup属性
+// 定义的所有变量，模板可以直接使用
 import { ref } from "vue";
 
 const count = ref(0);
